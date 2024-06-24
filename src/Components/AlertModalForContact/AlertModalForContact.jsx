@@ -40,7 +40,9 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
           {
             headers:{
               "Content-Type":"Application/json"
-            }
+            },
+            withCredentials:true
+
           }
         )
           setPhone('')

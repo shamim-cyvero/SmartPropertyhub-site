@@ -14,35 +14,41 @@ const Contact = () => {
 
   const contactHandler=async (e)=>{
     e.preventDefault()
-
-    if(phone.length===10){
-
-      const {data}= await axios.post(`${server}/contact`,
-        {phone,name,email,message},
-        {
-          headers:{
-            "Content-Type":"Application/json"
+    try {
+      
+      if(phone.length===10){
+  
+        const {data}= await axios.post(`${server}/contact`,
+          {phone,name,email,message},
+          {
+            headers:{
+              "Content-Type":"Application/json"
+            },
+            withCredentials:true
           }
-        }
-      )
-        setName('')
-        setPhone('')
-        setEmail('')
-        setMessage('')
-      
-        toast({
-          title: data.message,
-          description: "Agent reach out soon",
-          status: 'success',
-          duration: 6000,
-          isClosable: true,
-        })
-      
-    }else{
-      return alert('Phone Number is not valid')
-
+        )
+          setName('')
+          setPhone('')
+          setEmail('')
+          setMessage('')
+        
+          toast({
+            title: data.message,
+            description: "Agent reach out soon",
+            status: 'success',
+            duration: 6000,
+            isClosable: true,
+          })
+        
+      }else{
+        return alert('Phone Number is not valid')
+  
+      }
+     
+    } catch (error) {
+      console.log(error)
     }
-   
+
 }
   return (
     <>

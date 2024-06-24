@@ -32,7 +32,9 @@ const ContactUs = () => {
             headers: {
               'Content-Type': 'Application/json',
             },
-          }
+            withCredentials:true
+
+          },
         );
         loading = false;
         setPhone('');
