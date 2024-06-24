@@ -1,0 +1,35 @@
+.bellaHighBg{
+    background: #00B98E;
+    padding: 2rem;
+}
+.Container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .bellhigh {
+    flex: 1 0 30%; 
+    margin: 10px;
+    border: 1px solid #00B98E ;
+    padding: 1rem;
+    color: grey;
+    background: white;
+  }
+  .border>p{
+    font-size: .9rem;
+  }
+  
+  @media (max-width: 768px) {
+    .bellhigh {
+      flex-basis: 45%; 
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .bellhigh {
+      flex-basis: 100%; 
+    }
+  }
+  

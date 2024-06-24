@@ -1,0 +1,12 @@
+.btndark{
+    background:#0E2E50;
+    color: white;
+}
+.btndark:hover{
+    background:#0b2642;
+    color: white;
+}
+#greenbg{
+    background: #a0e2d3 !important;
+   opacity: 5;
+}

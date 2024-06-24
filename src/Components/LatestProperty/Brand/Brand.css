@@ -1,0 +1,13 @@
+.brnd>img{
+    aspect-ratio: 3/2;
+    max-height: 200px;
+}
+
+.slider-container {
+    margin: 3rem;
+
+}
+.brnd{
+    border: 2px solid #00B98E;
+     width: 80%;
+}

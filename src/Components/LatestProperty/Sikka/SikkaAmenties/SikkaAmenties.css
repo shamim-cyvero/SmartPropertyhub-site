@@ -1,0 +1,48 @@
+#kamya {
+    background: #00B98E;
+    padding: 2rem;
+}
+
+.SikkaImges {
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.SikkaFloor {
+    width: 15%;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.SikkaFloor > img {
+    width: 70%;
+    padding: 1rem;  
+}
+
+.SikkaFloor > p {
+    text-align: center;
+}
+ 
+
+
+@media screen and (max-width: 965px) {
+    .SikkaFloor {
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    .SikkaFloor {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

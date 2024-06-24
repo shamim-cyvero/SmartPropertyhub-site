@@ -1,0 +1,32 @@
+.Container {
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .amentiesGallery {
+    flex: 1 0 30%; 
+    margin: 10px;
+    /* text-align: center; */
+    border: 1px solid #00B98E;
+    padding: 1rem 0;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @media (max-width: 768px) {
+    .amentiesGallery {
+      flex-basis: 45%; 
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .amentiesGallery {
+      flex-basis: 100%; 
+    }
+  }
+  

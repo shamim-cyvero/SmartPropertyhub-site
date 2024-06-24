@@ -1,0 +1,81 @@
+/********** Template CSS **********/
+:root {
+    --primary: #00B98E !important;
+    --secondary: #FF6922 ;
+    --light: #EFFDF5;
+    --dark: #0E2E50 !important;
+}
+
+.property-item>div>a>img{
+    aspect-ratio: 3/2 !important;
+
+}
+
+.property-item>div>small{
+    font-size: .9rem;
+    color: grey;
+}
+
+.property-item>div>p{
+    font-size: .9rem;
+    color: grey;
+}
+
+.property-item>div>a{
+    text-decoration: none;
+    color: #0E2E50;
+    font-weight: 700;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+}
+
+.bg-white2{
+    color: #00B98E ;
+    font-weight: 700;
+}
+.bg-primary,
+.propertybtn{
+    background-color: #00B98E !important;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+.propertybtn:hover{
+    background-color: #03a780 !important;
+    color: white;
+}
+.bg-white2{
+    color: #00B98E !important;
+
+}
+/*** Property List ***/
+.nav-pills .nav-item .btn {
+    color: #0E2E50 !;
+}
+
+.nav-pills .nav-item :hover,
+.nav-pills .nav-item  {
+    color: #FFFFFF;
+}
+
+.property-item {
+    box-shadow: 0 0 30px rgba(0, 0, 0, .08) !important;
+}
+
+.property-item img {
+    transition: .5s;
+}
+
+.property-item:hover img {
+    transform: scale(1.1);
+}
+
+.property-item .border-top {
+    border-top: 1px dashed rgba(0, 185, 142, .3) !important;
+}
+
+.property-item .border-end {
+    border-right: 1px dashed rgba(0, 185, 142, .3) !important;
+}
+
+

@@ -1,0 +1,48 @@
+#kamya{
+    background: #00B98E;
+    padding: 2rem;
+}
+.kamyaImges{
+  width: 90%;
+  margin: auto;
+    display: flex;
+    align-items: center;
+    /* justify-content: center; */
+    flex-wrap: wrap;
+}
+
+.kamyaback{
+    width: 31%;
+    margin: 10px;
+    background: #c9f1e8;
+}
+.kamyaback>p{
+    text-align: center;
+}
+.kamyaFloor>img{
+    width: 100%;
+    padding: .4rem;
+}
+
+@media screen and (max-width:965px) {
+    .kamyaImges{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .kamyaback{
+        width: 45%;
+    }
+}
+@media screen and (max-width:510px) {
+    .kamyaImges{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .kamyaback{
+        width: 100%;
+    }
+}

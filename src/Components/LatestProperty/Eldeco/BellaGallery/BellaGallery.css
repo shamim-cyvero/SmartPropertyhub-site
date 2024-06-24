@@ -1,0 +1,23 @@
+.galleryContainer{
+    width: 90%;
+    margin: auto;   
+}
+.Galleryrow{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.Galleryrow>img{
+    width:25%;
+    padding: 8px;
+    transition: transform 0.3s ease; 
+}
+.Galleryrow>img:hover{
+    transform: scale(1.05); 
+}
+
+
+
+
+ 
