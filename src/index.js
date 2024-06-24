@@ -6,7 +6,7 @@ import App from './App';
 const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container);
 
-export const server='http://localhost:2000/api/v1'
+export const server='https://smart-propertyhub-server.vercel.app/api/v1'
 
 root.render(
   <StrictMode>
