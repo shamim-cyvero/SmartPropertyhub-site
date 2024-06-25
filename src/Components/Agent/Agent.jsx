@@ -51,19 +51,18 @@ const Agent = () => {
         onClose()
         toast({
           title: data.message,
-          description: "Agent reach out soon",
+          description: "Agent Reach out Soon",
           status: 'success',
           duration: 6000,
           isClosable: true,
         })
           
       } else {
-        return alert('Phone Number not valid');
+        return alert('Enter Valid Phone Number');
       }
 
     } catch (error) {
-      alert(error)
-      
+      return console.log(error)      
     }
 
   };
