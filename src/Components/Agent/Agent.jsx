@@ -30,6 +30,8 @@ const Agent = () => {
   const { isOpen, onOpen, onClose } = useDisclosure(); 
 
   const [phone,setPhone]=useState()
+  const [loading, setloading] = useState(false);
+
   const toast = useToast()
 
 
@@ -39,6 +41,7 @@ const Agent = () => {
     try {
       
       if (phone.length === 10) {
+        setloading(true);
         const {data}=await axios.post(`${server}/contact/email`,
           {phone},
           {
@@ -48,6 +51,7 @@ const Agent = () => {
           }
         )
         setPhone('')
+        setloading(false);
         onClose()
         toast({
           title: data.message,
@@ -58,6 +62,7 @@ const Agent = () => {
         })
           
       } else {
+        setloading(false);
         return alert('Enter Valid Phone Number');
       }
 
@@ -197,6 +202,7 @@ const Agent = () => {
                   color={'white'}
                   onClick={() => contactHandler()}
                   leftIcon={<FaUser />}
+                  isLoading={loading}
                 >
                   Call
                 </Button>

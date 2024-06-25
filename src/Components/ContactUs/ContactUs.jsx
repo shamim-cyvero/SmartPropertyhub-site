@@ -14,9 +14,9 @@ import { server } from '../..';
 const ContactUs = () => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState();
+  const [loading, setloading] = useState(false);
   const toast = useToast();
 
-  let loading = false;
 
   const contactHandler = async () => {
     try {
@@ -24,7 +24,7 @@ const ContactUs = () => {
         return alert('both value required');
       }
       if (phone.length === 10) {
-        loading = true;
+        setloading(true);
         const { data } = await axios.post(
           `${server}/contact/email`,
           { name, phone },
@@ -36,9 +36,9 @@ const ContactUs = () => {
 
           },
         );
-        loading = false;
         setPhone('');
         setName('');
+        setloading(false);
         toast({
           title: data.message,
           description: 'Agent Reach out Soon',
@@ -47,6 +47,7 @@ const ContactUs = () => {
           isClosable: true,
         });
       } else {
+        setloading(false);
         return alert('Enter Valid Phone Number');
       }
     } catch (error) {

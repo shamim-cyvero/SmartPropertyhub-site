@@ -9,6 +9,8 @@ import { server } from '../..';
 
 const Footer = () => {
   const [phone,setPhone]=useState()
+  const [loading, setloading] = useState(false);
+
   const { isOpen, onOpen, onClose } = useDisclosure(); 
   const toast = useToast()
 
@@ -17,6 +19,7 @@ const Footer = () => {
     try {
       
       if (phone.length === 10) {
+        setloading(true);
         const {data}=await axios.post(`${server}/contact/email`,
           {phone},
           {
@@ -26,21 +29,22 @@ const Footer = () => {
           }
         )
           setPhone('')
+          setloading(false);
           onClose()
           toast({
             title: data.message,
-            description: "Agent reach out soon",
+            description: "Agent Reach out Soon",
             status: 'success',
             duration: 6000,
             isClosable: true,
           })
       } else {
-        return alert('Phone Number not valid');
+        setloading(false);
+        return alert('Enter Valid Phone Number');
       }
    
     } catch (error) {
-      alert(error)
-      
+      return console.log(error)     
     }
 
   };
@@ -146,7 +150,7 @@ const Footer = () => {
             </div> */}
 
           <div className="footerBox">
-            <h3>Contact Us</h3>
+            <h3 style={{textAlign:'center'}} >Contact Us</h3>
             <Button
               onClick={() => onOpen()}
               w={{ base: '90%' }}
@@ -156,7 +160,7 @@ const Footer = () => {
               children={'Call Agent'}
               // color={'white'}
               // _hover={{ color: 'white' }}
-
+              margin={'1vmax 0'}
             />
              <Modal size={'lg'} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay
@@ -203,6 +207,7 @@ const Footer = () => {
                   color={'white'}
                   onClick={() => contactHandler()}
                   leftIcon={<FaUser />}
+                  isLoading={loading}
                 >
                   Call
                 </Button>
@@ -215,7 +220,7 @@ const Footer = () => {
           </ModalContent>
           </Modal>
             {/* <p>+123 456 7890</p> */}
-            <p style={{marginTop:'1vmax'}} >company@gmail.com</p>
+            <p style={{textAlign:'center'}} >info@cyverotechnologies.com</p>
           </div>
         </div>
 

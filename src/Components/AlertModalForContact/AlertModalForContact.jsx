@@ -25,6 +25,8 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
 
   const [name,setName]=useState('')
   const [phone,setPhone]=useState()
+  const [loading, setloading] = useState(false);
+
 
 
   const contactHandler=async ()=>{
@@ -34,6 +36,7 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
          return alert('both value required')
       }
       if(phone.length===10){
+        setloading(true);
       
        const {data}= await axios.post(`${server}/contact/email`,
           {phone,name},
@@ -45,9 +48,10 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
 
           }
         )
-          onClose()
           setPhone('')
           setName('')
+          setloading(false);
+          onClose()
         
           toast({
             title: data.message,
@@ -57,6 +61,7 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
             isClosable: true,
           })
       }else{
+        setloading(false);
         return alert('Enter Valid Phone Number')
       }
  
@@ -82,7 +87,7 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
         <ModalOverlay bg='blackAlpha.300' backdropFilter='blur(10px) hue-rotate(90deg)'/>
         <ModalContent>
           <ModalHeader>
-            <Heading fontWeight={'500'} letterSpacing={'5px'} margin={'1vmax 0'} textAlign={'center'} children={'REGISTER NOW'} />
+            <Heading fontWeight={'500'} letterSpacing={'5px'} margin={'1vmax 0'} textAlign={'center'} children={'Get In Touch'} />
           </ModalHeader>
           <ModalCloseButton color={'green'} />
 
@@ -98,7 +103,8 @@ const AlertModalForContact = ({ isOpen, onOpen, onClose }) => {
                 <Button letterSpacing={'2px'} colorScheme="blue" mr={3} onClick={onClose}>
                     Close
                 </Button>
-                <Button letterSpacing={'2px'} _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  onClick={()=>contactHandler()}>Contact Now</Button>
+          
+          <Button isLoading={loading} letterSpacing={'2px'} _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  onClick={()=>contactHandler()}>Contact Now</Button>
             </HStack>
           </ModalFooter>
         </ModalContent>

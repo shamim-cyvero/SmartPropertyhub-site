@@ -10,19 +10,21 @@ const Contact = () => {
   const [phone,setPhone]=useState()
   const [email,setEmail]=useState()
   const [message,setMessage]=useState()
+  const [loading, setloading] = useState(false);
+
 
   const {isOpen,onClose,onOpen}=useDisclosure();
 
 
   const toast = useToast()
-  let loading=false
 
   const contactHandler=async (e)=>{
     e.preventDefault()
     try {
       
       if(phone.length===10){
-        loading=true
+        setloading(true);
+
         const {data}= await axios.post(`${server}/contact`,
           {phone,name,email,message},
           {
@@ -32,24 +34,25 @@ const Contact = () => {
             withCredentials:true
           }
         )
-        loading=false
-
-          setName('')
-          setPhone('')
-          setEmail('')
-          setMessage('')
+        
+        
+        setName('')
+        setPhone('')
+        setEmail('')
+        setMessage('')
+        setloading(false);
         
           toast({
             title: data.message,
-            description: "Agent reach out soon",
+            description: "Agent Reach out Soon",
             status: 'success',
             duration: 6000,
             isClosable: true,
           })
           
       }else{
-        return alert('Phone Number is not valid')
-  
+        setloading(false);
+        return alert('Enter Valid Phone Number') 
       }
      
     } catch (error) {
