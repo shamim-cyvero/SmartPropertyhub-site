@@ -106,8 +106,8 @@ const Footer = () => {
       <div className="container">
         <div className="footerSection">
           <div className="footerBox" >
-            <h3>SmartPropertyhub.io</h3>
-            <small>SmartPropertyHub.io: Your Gateway to the Perfect Home. Discover, Connect, and Invest with Confidence. Explore top listings, get expert advice, and find your dream property today!</small>
+            <h3>SmartPropertyhub.in</h3>
+            <small>SmartPropertyHub.in: Your Gateway to the Perfect Home. Discover, Connect, and Invest with Confidence. Explore top listings, get expert advice, and find your dream property today!</small>
             <div className="footer-icons">
               <p><FaFacebook size={20} /></p>
               <p><FaTwitterSquare size={20} /></p>
