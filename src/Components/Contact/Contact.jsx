@@ -1,8 +1,9 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MdCall} from "react-icons/md";
 import { server } from '../..';
-import { useToast } from '@chakra-ui/react';
+import { useDisclosure, useToast } from '@chakra-ui/react';
+import AlertModalForContact from '../AlertModalForContact/AlertModalForContact';
 // import { FaLocationDot } from "react-icons/fa6";
 const Contact = () => {
   const [name,setName]=useState('')
@@ -10,14 +11,18 @@ const Contact = () => {
   const [email,setEmail]=useState()
   const [message,setMessage]=useState()
 
+  const {isOpen,onClose,onOpen}=useDisclosure();
+
+
   const toast = useToast()
+  let loading=false
 
   const contactHandler=async (e)=>{
     e.preventDefault()
     try {
       
       if(phone.length===10){
-  
+        loading=true
         const {data}= await axios.post(`${server}/contact`,
           {phone,name,email,message},
           {
@@ -27,6 +32,8 @@ const Contact = () => {
             withCredentials:true
           }
         )
+        loading=false
+
           setName('')
           setPhone('')
           setEmail('')
@@ -39,7 +46,7 @@ const Contact = () => {
             duration: 6000,
             isClosable: true,
           })
-        
+          
       }else{
         return alert('Phone Number is not valid')
   
@@ -50,6 +57,18 @@ const Contact = () => {
     }
 
 }
+
+let timeout;
+function myFunction() {
+  timeout = setTimeout(alertFunc, 5000);
+}
+function alertFunc() {
+  onOpen()
+}
+
+useEffect(()=>{
+  myFunction()
+},[])
   return (
     <>
       <div className="container-xxl py-5">
@@ -77,7 +96,7 @@ const Contact = () => {
                       <div className="icon me-1" >
                       <MdCall style={{width:"25px",height:"25px",color:"#00B98E"}}/>
                       </div>
-                      <span>123 Street, New York, USA</span>
+                      <span>Noida Sector-4 Gaur City Center</span>
                     </div>
                   </div>
                 </div>
@@ -112,12 +131,14 @@ const Contact = () => {
             <div className="col-md-6 wow fadeInUp" data-wow-delay="0.1s">
               <iframe
                 className="position-relative rounded w-100 h-100"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d437.8524259424285!2d77.42748751198708!3d28.605194058281302!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cef1341438e9d%3A0x5f7dd3497a8f0d0a!2sGaur%20City%20Center!5e0!3m2!1sen!2sin!4v1719296582745!5m2!1sen!2sin"
+                // src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3001156.4288297426!2d-78.01371936852176!3d42.72876761954724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4ccc4bf0f123a5a9%3A0xddcfc6c1de189567!2sNew%20York%2C%20USA!5e0!3m2!1sen!2sbd!4v1603794290143!5m2!1sen!2sbd"
                 frameBorder={0}
                 style={{ minHeight: 400, border: 0 }}
                 allowFullScreen=""
                 aria-hidden="false"
                 tabIndex={0}
+                loading="lazy"
               />
             </div>
             <div className="col-md-6">
@@ -180,7 +201,7 @@ const Contact = () => {
                       </div>
                     </div>
                     <div className="col-12">
-                      <button  className="btn propertybtn w-100 py-3" type="submit" style={{color:'white'}}>
+                      <button disabled={loading} className="btn propertybtn w-100 py-3" type="submit" style={{color:'white'}}>
                         Send Message
                       </button> 
                     </div>
@@ -191,6 +212,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      <AlertModalForContact isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+      {/* <iframe src="" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> */}
     </>
   )
 }

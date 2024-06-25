@@ -46,7 +46,6 @@ const Header = () => {
   //   state => state.userContainer
   // );
   const {isOpen,onClose,onOpen}=useDisclosure();
-  const [ShowphoneMenu,setShowPhoneMenu]=useState()
 
   const navigate=useNavigate()
   // const dispatch=useDispatch()
@@ -56,25 +55,11 @@ const Header = () => {
       // await dispatch(logout())
       navigate('/')
   }
-  const showPhoneMenu=(Show_id)=>{
-    setShowPhoneMenu(Show_id)
-  }
   // const contactModel=()=>{ 
   //   // e.stopPropagation();
   //   onOpen()
   // }
 
-  let timeout;
-function myFunction() {
-  timeout = setTimeout(alertFunc, 5000);
-}
-function alertFunc() {
-  onOpen()
-}
-
-useEffect(()=>{
-  myFunction()
-},[])
   return (
     <>
     
@@ -115,7 +100,7 @@ useEffect(()=>{
           variant={'ghost'}
           colorScheme={'black'}
           children={<HiMenu />}
-          onClick={()=>showPhoneMenu(1)}
+          onClick={()=>onOpen()}
           fontSize={'2xl'}
           display={{base:'flex',lg:'none'}}
           justifyContent={'center'}
@@ -127,60 +112,55 @@ useEffect(()=>{
         />
       </HStack>
 
-    </HStack>
-<AlertModalForContact isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+    </HStack> 
 
-  {
-    ShowphoneMenu && ShowphoneMenu===1?(
-      <Drawer isOpen={isOpen} onClose={onClose} placement={'right'} >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader>
-           <Heading bgGradient={'linear(to-l,#FF0080, #00B66E)'} bgClip={'text'} size={'md'} children={'Smart Property Hub'} />
-          </DrawerHeader>
-          <DrawerBody>
-            <VStack alignItems={'flex-start'} justifyContent={'center'}>
-              <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/'), onClose() )} children={'Home'} />
-              {/* {
-                isAuthenticated?(
-                  <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/profile'), onClose() )} children={'Profile'} />
-                ):null
-              } */}
-              <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/london'), onClose() )} children={'London Mart'} />
-              <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/elitex'), onClose() )} children={'Elite-X'} />
-              <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/eldeco'), onClose() )} children={'Eldeco'} />
-              <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/sikka'), onClose() )} children={'Sikka'} />
-              
-            </VStack>
-            {/* <HStack justifyContent={'center'} alignItems={'center'} w={'100%'} >
-              <PhoneTemplatesSlider />
-            </HStack> */}
-          </DrawerBody>
-          <DrawerFooter  >
-            <HStack w={'100%'} justifyContent={'space-between'} mb={'8'} >
-              {/* {
-                isAuthenticated?(
-                  <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>LogoutHandler()}  children={'Log Out'} />
-                  
-                  ):(
-                    <>
-                   <Button colorScheme={'purple'} onClick={()=>(navigate('/login'), onClose() )}  children={'Login'} />
-                    <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/login'), onClose() )} children={'Login'} />
-                    <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/signUp'), onClose() )} children={'signUp'} />
+     <Drawer isOpen={isOpen} onClose={onClose} placement={'right'} >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader>
+             <Heading bgGradient={'linear(to-l,#FF0080, #00B66E)'} bgClip={'text'} size={'md'} children={'Smart Property Hub'} />
+            </DrawerHeader>
+            <DrawerBody>
+              <VStack alignItems={'flex-start'} justifyContent={'center'}>
+                <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/'), onClose() )} children={'Home'} />
+                {/* {
+                  isAuthenticated?(
+                    <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/profile'), onClose() )} children={'Profile'} />
+                  ):null
+                } */}
+                <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/london'), onClose() )} children={'London Mart'} />
+                <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/elitex'), onClose() )} children={'Elite-X'} />
+                <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/eldeco'), onClose() )} children={'Eldeco'} />
+                <Button textAlign={'center'} w={'100%'} variant={'outline'} colorScheme={'whatsapp'} onClick={()=>(navigate('/sikka'), onClose() )} children={'Sikka'} />
+                
+              </VStack>
+              {/* <HStack justifyContent={'center'} alignItems={'center'} w={'100%'} >
+                <PhoneTemplatesSlider />
+              </HStack> */}
+            </DrawerBody>
+            <DrawerFooter  >
+              <HStack w={'100%'} justifyContent={'space-between'} mb={'8'} >
+                {/* {
+                  isAuthenticated?(
+                    <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>LogoutHandler()}  children={'Log Out'} />
                     
-                    <Button colorScheme={'purple'} onClick={()=>(navigate('/signUp'), onClose() )}  children={'signUp'} />
-                    </>
-                    )
-                    }            
-              */}
-              {/* <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/signUp'), onClose() )} children={'Agent'} /> */}
-            </HStack>
-          </DrawerFooter>
-        </DrawerContent>
+                    ):(
+                      <>
+                     <Button colorScheme={'purple'} onClick={()=>(navigate('/login'), onClose() )}  children={'Login'} />
+                      <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/login'), onClose() )} children={'Login'} />
+                      <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/signUp'), onClose() )} children={'signUp'} />
+                      
+                      <Button colorScheme={'purple'} onClick={()=>(navigate('/signUp'), onClose() )}  children={'signUp'} />
+                      </>
+                      )
+                      }            
+                */}
+                {/* <Button _hover={{bgColor:'#00B66E'}} bgColor={'#00B98E'} color={'white'}  m={'0 10px'} fontSize={['sm','sm']} variant={'solid'} onClick={()=>(navigate('/signUp'), onClose() )} children={'Agent'} /> */}
+              </HStack>
+            </DrawerFooter>
+          </DrawerContent>
       </Drawer>
-  ):(null)
-  }
 
 
    

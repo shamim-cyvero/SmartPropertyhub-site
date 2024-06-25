@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // import Home from './Components/Home/Home';
@@ -6,7 +6,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 import SignUp from './Components/User/SignUp';
-import { CircularProgress, Stack } from '@chakra-ui/react';
+import { CircularProgress, Stack, useDisclosure } from '@chakra-ui/react';
+import AlertModalForContact from './Components/AlertModalForContact/AlertModalForContact';
 
 const Header = lazy(() => import('./Components/Header/Header'));
 const Footer = lazy(() => import('./Components/Footer/Footer'));
@@ -17,6 +18,8 @@ const Sikka = lazy(() => import('./Components/LatestProperty/Sikka/Sikka'));
 const Home = lazy(() => import('./Components/Home/Home'));
 
 function App() {
+
+
   return (
     <BrowserRouter>
     <Suspense
