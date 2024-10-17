@@ -102,7 +102,7 @@ const Home = () => {
       
     <Heading size={'2xl'} m={'3vmax 0'} textTransform={'uppercase'} textAlign={'center'} letterSpacing={'10px'} children={'Recent Properties'} />
     <About
-      title={'LONDON MARTTHE'}
+      title={'New LONDON MARTTHE'}
       description={'London Mart is conceived and conceptualized by Mart Promoters. They are a multi-facet establishment of companies which specializes not just into real estate and urban space planning but also have their wings spread out into fields of advertising & media, motion production and hospitality sector. '}
       points={['LONDON MARTLUXURY REDEFINED','SHOPPER’S PARADISEGET YOUR GLAM ON','BETTER TOMORROWMART PROMOTERS']} 
       siteLink={'london'}
